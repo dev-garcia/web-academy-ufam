@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 5</title>
+    <style>
+      body {
+        margin: 20px;
+        text-align: center;
+      }
+
+      .layout-um {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 150px);
+        gap: 8px;
+      }
+      .layout-um-item1 {
+        grid-column: span 2;
+        background-color: #8b0000;
+      }
+      .layout-um-item2 {
+        grid-column: span 2;
+        background-color: #00008b;
+      }
+      .layout-um-item3 {
+        grid-column: span 1;
+        background-color: #006400;
+      }
+      .layout-um-item4 {
+        grid-column: span 3;
+        background-color: #8b008b;
+      }
+      .layout-um-item5 {
+        grid-column: span 4;
+        background-color: #ff8c00;
+      }
+      .border {
+        border-radius: 8px;
+      }
+
+      .layout-dois {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 8px;
+      }
+
+      .layout-dois-item1 {
+        grid-column: span 4;
+        background-color: #8b0000;
+        height: 150px;
+      }
+
+      .layout-dois-item2 {
+        grid-column: span 2;
+        grid-row: span 2;
+        background-color: #006400;
+        height: 310px;
+      }
+
+      .layout-dois-item3 {
+        grid-column: span 2;
+        background-color: #8b008b;
+        height: 150px;
+      }
+
+      .layout-dois-item4 {
+        grid-column: span 1;
+        background-color: #00008b;
+        height: 150px;
+      }
+
+      .layout-dois-item5 {
+        grid-column: span 1;
+        background-color: #ff8c00;
+        height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Primeiro Grid</h2>
+    <div class="layout-um">
+      <div class="border layout-um-item1"></div>
+      <div class="border layout-um-item2"></div>
+      <div class="border layout-um-item3"></div>
+      <div class="border layout-um-item4"></div>
+      <div class="border layout-um-item5"></div>
+    </div>
+
+    <br />
+    <br />
+    <hr />
+    <br />
+    <br />
+
+    <h2>Segundo Grid</h2>
+
+    <div class="layout-dois">
+      <div class="border layout-dois-item1"></div>
+      <div class="border layout-dois-item2"></div>
+      <div class="border layout-dois-item3"></div>
+      <div class="border layout-dois-item4"></div>
+      <div class="border layout-dois-item5"></div>
+    </div>
+  </body>
+</html>
