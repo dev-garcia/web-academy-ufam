@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML 3</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px;
+        display: grid;
+        grid-template-areas:
+          "header header"
+          "main aside"
+          "footer footer";
+        grid-template-columns: 3fr 1fr;
+        grid-gap: 16px;
+      }
+      header {
+        grid-area: header;
+        background-color: #f8f8f8;
+        padding: 16px;
+        text-align: center;
+        border-bottom: 2px solid #ccc;
+      }
+      nav ul {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      nav ul li {
+        margin: 0 15px;
+      }
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+      }
+      main {
+        grid-area: main;
+      }
+      article {
+        margin-bottom: 16px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      figure {
+        margin: 0;
+        flex-shrink: 0;
+      }
+      img {
+        width: 200px; /* Define o tamanho da imagem */
+        height: auto;
+        border-radius: 8px;
+      }
+      h2 {
+        margin: 10px 0 5px;
+        font-size: 1.5em;
+      }
+      h3 {
+        margin: 0;
+        color: #d33;
+        font-size: 1.2em;
+      }
+      p {
+        line-height: 1.6;
+      }
+      aside {
+        grid-area: aside;
+        background-color: #f4f4f4;
+        padding: 16px;
+        border-left: 2px solid #ccc;
+      }
+      aside section {
+        margin-bottom: 16px;
+      }
+      footer {
+        grid-area: footer;
+        text-align: center;
+        padding: 16px;
+        background-color: #f8f8f8;
+        border-top: 2px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Nome do Restaurante</h1>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Cardápio</a></li>
+            <li><a href="#">Shows</a></li>
+            <li><a href="#">Posts</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+        <article>
+          <figure>
+            <img
+              src="https://www.coisasdaroca.com/wp-content/uploads/2021/01/tambaqui-2.jpg"
+              alt="Tambaqui de forno"
+            />
+            <figcaption>Banda de tambaqui assada no forno.</figcaption>
+          </figure>
+          <div>
+            <h2>Tambaqui de forno, delicioso peixe amazônico</h2>
+            <h3>O mais pedido</h3>
+            <p>
+              Tambaqui é um dos peixes mais deliciosos da culinária amazônica, e
+              olha que tem muitos!
+            </p>
+          </div>
+        </article>
+
+        <article>
+          <figure>
+            <img
+              src="https://acozinhabrasileira.com.br/wp-content/uploads/2021/09/receita-de-tacaca-1024x683.jpg"
+              alt="Tacacá"
+            />
+            <figcaption>Tacacá, típico Tambaqui da Banda.</figcaption>
+          </figure>
+          <div>
+            <h2>Delicioso Tacacá</h2>
+            <h3>Prato indígena feito com jambu e camarão</h3>
+            <p>
+              O tacacá é um prato típico de origem paraense e leva em sua
+              composição uma série de alimentos benéficos para o corpo, como o
+              camarão.
+            </p>
+          </div>
+        </article>
+      </main>
+
+      <aside>
+        <section>
+          <h2>Mais Populares</h2>
+          <ul>
+            <li><a href="#">Tambaqui de forno</a></li>
+            <li><a href="#">Tacacá</a></li>
+            <li><a href="#">Camarão empanado</a></li>
+            <li><a href="#">Filé de frango</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Contato</h2>
+          <p>Tambaqui da Banda</p>
+          <p>Manaus, Amazonas</p>
+          <p>Fone: (92) 90001-0001</p>
+        </section>
+      </aside>
+
+      <footer>
+        <p>&copy; 2024 Tambaqui de Borda</p>
+      </footer>
+    </div>
+  </body>
+</html>
