@@ -1,47 +1,58 @@
 // 1. COMPLETE VARIABLE AND FUNCTION DEFINITIONS
 
-const customName = document.getElementById('customname');
-const randomize = document.querySelector('.randomize');
-const story = document.querySelector('.story');
+const customName = document.getElementById("customname");
+const randomize = document.querySelector(".randomize");
+const story = document.querySelector(".story");
 
-function randomValueFromArray(array){
-  const random = Math.floor(Math.random()*array.length);
+function randomValueFromArray(array) {
+  const random = Math.floor(Math.random() * array.length);
   return array[random];
 }
 
 // 2. RAW TEXT STRINGS
 
-// It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.
+const storyText =
+  "Estava fazendo 34 graus lá fora, então :insertx: decidiu usar a arma de portal. Eles acabaram em :inserty:, onde :insertz:. Morty viu tudo, mas não ficou surpreso — :insertx: pesa 50 quilos, e estava um dia muito quente.";
 
-// Willy the Goblin
-// Big Daddy
-// Father Christmas
-
-// the soup kitchen
-// Disneyland
-// the White House
-
-// spontaneously combusted
-// melted into a puddle on the sidewalk
-// turned into a slug and crawled away
+const insertX = ["Rick", "Morty", "Sr. Meeseeks"];
+const insertY = [
+  "a Cidadela dos Ricks",
+  "uma dimensão alternativa",
+  "Blips and Chitz",
+];
+const insertZ = [
+  "acidentalmente criou um clone",
+  "causou uma fenda no espaço-tempo",
+  "se transformou em um picles",
+];
 
 // 3. EVENT LISTENER AND PARTIAL FUNCTION DEFINITION
 
-randomize.addEventListener('click', result);
+randomize.addEventListener("click", result);
 
 function result() {
+  let newStory = storyText;
 
-  if(customName.value !== '') {
+  const xItem = randomValueFromArray(insertX);
+  const yItem = randomValueFromArray(insertY);
+  const zItem = randomValueFromArray(insertZ);
+
+  newStory = newStory.replaceAll(":insertx:", xItem);
+  newStory = newStory.replaceAll(":inserty:", yItem);
+  newStory = newStory.replaceAll(":insertz:", zItem);
+
+  if (customName.value !== "") {
     const name = customName.value;
-
+    newStory = newStory.replaceAll("Morty", name);
   }
 
-  if(document.getElementById("uk").checked) {
-    const weight = Math.round(300);
-    const temperature =  Math.round(94);
-
+  if (document.getElementById("uk").checked) {
+    const weight = `${Math.round(136 / 6.35)} stone`;
+    const temperature = `${Math.round(((94 - 32) * 5) / 9)} centigrade`;
+    newStory = newStory.replaceAll("34 graus", temperature);
+    newStory = newStory.replaceAll("50 quilos", weight);
   }
 
-  story.textContent = ;
-  story.style.visibility = 'visible';
+  story.textContent = newStory;
+  story.style.visibility = "visible";
 }
