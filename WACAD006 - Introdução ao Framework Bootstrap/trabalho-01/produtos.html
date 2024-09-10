@@ -14,9 +14,107 @@
   </head>
   <body>
     <!-- navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Loja WA</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Gerenciar Produtos</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <button type="button" class="btn btn-secondary">Sair</button>
+          </form>
+        </div>
+      </div>
+    </nav>
     <!-- navbar -->
 
+    <br />
+    <br />
+
     <!-- gerenciar produtos -->
+    <div class="container">
+      <h2 class="text-left">Produtos:</h2>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+        <div class="col">
+          <div class="card">
+            <img
+              src="/WACAD006 - Introdução ao Framework Bootstrap/trabalho-01/assets/placeholder-image.png"
+              class="card-img-top"
+              alt="Imagem de uma imagem vazia kk"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Bicileta</h5>
+              <p class="card-text">R$ 1.000,00</p>
+              <a href="#" class="btn btn-primary">Adicionar no carrinho</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img
+              src="/WACAD006 - Introdução ao Framework Bootstrap/trabalho-01/assets/placeholder-image.png"
+              class="card-img-top"
+              alt="Imagem de uma imagem vazia kk"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Echo dot</h5>
+              <p class="card-text">R$ 600,00</p>
+              <a href="#" class="btn btn-primary">Adicionar no carrinho</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img
+              src="/WACAD006 - Introdução ao Framework Bootstrap/trabalho-01/assets/placeholder-image.png"
+              class="card-img-top"
+              alt="Imagem de uma imagem vazia kk"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Celular</h5>
+              <p class="card-text">R$ 1.500,00</p>
+              <a href="#" class="btn btn-primary">Adicionar no carrinho</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img
+              src="/WACAD006 - Introdução ao Framework Bootstrap/trabalho-01/assets/placeholder-image.png"
+              class="card-img-top"
+              alt="Imagem de uma imagem vazia kk"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Umidificador</h5>
+              <p class="card-text">R$ 100,00</p>
+              <a
+                class="btn btn-secondary disabled"
+                role="button"
+                aria-disabled="true"
+                >Indisponível
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- gerenciar produtos -->
 
     <!-- modal cadastrar produtos -->
