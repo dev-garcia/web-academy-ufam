@@ -14,7 +14,83 @@
   </head>
   <body>
     <!-- cadastro -->
+    <div class="container-fluid">
+      <div class="row vh-100">
+        <div
+          class="bg-light col-md-4 d-flex flex-column justify-content-center align-items-center"
+        >
+          <h2>Bem-vindo à WA Loja!</h2>
+        </div>
 
-   
+        <div
+          class="col-md-8 d-flex flex-column justify-content-center align-items-center"
+        >
+          <form class="w-50">
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome</label>
+              <input
+                class="form-control"
+                id="nome"
+                type="nome"
+                aria-label="Nome"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">E-mail</label>
+              <input
+                class="form-control"
+                id="email"
+                type="email"
+                aria-label="E-mail"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="confirmar-email" class="form-label"
+                >Confirmar E-mail</label
+              >
+              <input
+                class="form-control"
+                id="confirmar-email"
+                type="email"
+                aria-label="Confirmar E-mail"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="senha" class="form-label">Senha</label>
+              <input
+                class="form-control"
+                id="senha"
+                type="password"
+                aria-label="Senha"
+                required
+              />
+            </div>
+            <div class="d-grid gap-2 sm-col-6 mx-auto">
+              <button type="submit" class="btn btn-primary">
+                Confirmar cadastro
+              </button>
+            </div>
+            <br />
+            <a href="login.html" class="d-block text-center mt-2"
+              >já possuo cadastro</a
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
