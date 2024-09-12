@@ -2,6 +2,7 @@
   "name": "wacad007---fundamentos-de-nodejs",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "set NODE_ENV=development && npx nodemon index.js",
     "start:linux": "NODE_ENV=development  npx nodemon index.js",

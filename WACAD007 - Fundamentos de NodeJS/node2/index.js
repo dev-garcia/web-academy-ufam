@@ -1,18 +1,16 @@
-const http = require("http");
-const fs = require("fs");
+import http from "http";
+import fs from "fs";
+import path from "path";
 
-const path = require("path");
-
-const dotenv = require("dotenv");
+import dotenv from "dotenv";
+import { createLink } from "./util.js";
 
 dotenv.config({
-  path: path.resolve(__dirname, `/.env.${process.env.NODE_ENV}`),
+  path: path.resolve(process.cwd(), `.env.${process.env.NODE_ENV}`),
 });
 
 const PORT = process.env.PORT ?? 3333;
-
-const directoryPath = path.join(__dirname, "public");
-const { createLink } = require("./util");
+const directoryPath = path.join(process.cwd(), "public");
 
 const server = http.createServer((req, res) => {
   const filePath = path.join(directoryPath, req.url);
