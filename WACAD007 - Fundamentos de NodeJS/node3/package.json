@@ -1,0 +1,30 @@
+{
+  "name": "node3",
+  "version": "1.0.0",
+  "description": "Exercício 3 do módulo Fundamentos de NodeJS.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-garcia/web-academy-ufam.git"
+  },
+  "keywords": [
+    "nodejs",
+    "lorem impsum"
+  ],
+  "author": "dev-garcia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dev-garcia/web-academy-ufam/issues"
+  },
+  "homepage": "https://github.com/dev-garcia/web-academy-ufam#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "lorem-ipsum": "^2.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
