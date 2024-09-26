@@ -35,3 +35,32 @@ export const generateLorem = (req: Request, res: Response) => {
     </html>
   `);
 };
+
+export const renderHb1 = (req: Request, res: Response) => {
+  res.render("hb1", {
+    mensagem: "Olá, você está aprendendo Express + HBS!",
+    layout: false,
+  });
+};
+
+export const renderHb2 = (req: Request, res: Response) => {
+  res.render("hb2", {
+    poweredByNodejs: true,
+    name: "Express",
+    type: "Framework",
+    layout: false,
+  });
+};
+
+export const renderHb3 = (req: Request, res: Response) => {
+  const profes = [
+    { nome: "David Fernandes", sala: 1238 },
+    { nome: "Horácio Fernandes", sala: 1233 },
+    { nome: "Edleno Moura", sala: 1236 },
+    { nome: "Elaine Harada", sala: 1231 },
+  ];
+  res.render("hb3", {
+    profes,
+    layout: false,
+  });
+};

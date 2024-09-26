@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { generateLorem } from "../controllers/main";
+import {
+  generateLorem,
+  renderHb1,
+  renderHb2,
+  renderHb3,
+} from "../controllers/main";
 const router = Router();
 
 router.get("/", (req, res) => {
@@ -7,5 +12,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/lorem", generateLorem);
+
+router.get("/hb1", renderHb1);
+router.get("/hb2", renderHb2);
+router.get("/hb3", renderHb3);
 
 export default router;
