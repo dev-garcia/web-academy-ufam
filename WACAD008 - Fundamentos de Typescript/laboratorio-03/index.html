@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrinho de Compras</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+  </head>
+  <body
+    class="bg-gray-100 font-sans min-h-screen flex items-center justify-center"
+  >
+    <div>
+      <div class="bg-white shadow-md rounded-lg p-8 max-w-lg w-full">
+        <h2>Adicionar produtos ao Carrinho de Compras</h2>
+      </div>
+
+      <form id="produtoForm" class="mt-6">
+        <div class="mt-4">
+          <label for="produto" class="block text-sm font-medium leading-6">
+            Produto:
+            <select
+              id="produto"
+              name="produto"
+              class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+            >
+              <option value="tv">TV</option>
+              <option value="celular">Celular</option>
+              <option value="bicicleta">Bicicleta</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="tvFields" class="produtoCompleto-fields my-4">
+          <div>
+            <label for="modeloTV" class="block text-sm font-medium leading-6"
+              >Modelo:
+              <input
+                type="text"
+                id="modeloTV"
+                name="modeloTV"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label for="resolucaoTV" class="block text-sm font-medium leading-6"
+              >Resolução:
+              <input
+                type="text"
+                id="resolucaoTV"
+                name="resolucaoTV"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label for="tamanhoTV" class="block text-sm font-medium leading-6"
+              >Tamanho em polegadas:
+              <input
+                type="number"
+                id="tamanhoTV"
+                name="tamanhoTV"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label
+              for="fabricanteTV"
+              class="block text-sm font-medium leading-6"
+              >Fabricante:
+              <input
+                type="text"
+                id="fabricanteTV"
+                name="fabricanteTV"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label for="valorTV" class="block text-sm font-medium leading-6"
+              >Valor:
+              <input
+                type="number"
+                id="valorTV"
+                name="valorTV"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+        </div>
+
+        <div id="celularFields" class="produtoCompleto-fields my-4">
+          <div>
+            <label
+              for="modeloCelular"
+              class="block text-sm font-medium leading-6"
+              >Modelo:
+              <input
+                type="text"
+                id="modeloCelular"
+                name="modeloCelular"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label
+              for="memoriaCelular"
+              class="block text-sm font-medium leading-6"
+              >Memória:
+              <input
+                type="number"
+                id="memoriaCelular"
+                name="memoriaCelular"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label
+              for="fabricanteCelular"
+              class="block text-sm font-medium leading-6"
+              >Fabricante:
+              <input
+                type="text"
+                id="fabricanteCelular"
+                name="fabricanteCelular"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label
+              for="valorCelular"
+              class="block text-sm font-medium leading-6"
+              >Valor:
+              <input
+                type="number"
+                id="valorCelular"
+                name="valorCelular"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+        </div>
+
+        <div id="bicicletaFields" class="produtoCompleto-fields my-4">
+          <div>
+            <label
+              for="modeloBicicleta"
+              class="block text-sm font-medium leading-6"
+              >Modelo:
+              <input
+                type="text"
+                id="modeloBicicleta"
+                name="modeloBicicleta"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label
+              for="tamanhoBicicleta"
+              class="block text-sm font-medium leading-6"
+              >Tamanho do aro:
+              <input
+                type="number"
+                id="tamanhoBicicleta"
+                name="tamanhoBicicleta"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label
+              for="fabricanteBicicleta"
+              class="block text-sm font-medium leading-6"
+              >Fabricante:
+              <input
+                type="text"
+                id="fabricanteBicicleta"
+                name="fabricanteBicicleta"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+
+          <div>
+            <label
+              for="valorBicicleta"
+              class="block text-sm font-medium leading-6"
+              >Valor:
+              <input
+                type="number"
+                id="valorBicicleta"
+                name="valorBicicleta"
+                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-200 focus:ring-green-200 sm:text-sm"
+                required
+            /></label>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="bg-green-500 text-white w-full py-2 rounded-md hover:bg-green-700 transition focus:outline-none focus:ring-2 focus:ring-green-200 focus:ring-offset-2"
+        >
+          Adicionar Produto
+        </button>
+      </form>
+
+      <h2 class="mt-8 space-y-4">Lista do Carrinho</h2>
+      <ul id="cartItems" class="mt-8 space-y-4"></ul>
+      <p>
+        <strong>Valor Total:</strong> R$<span id="valorTotal" class="px-4"
+          >0</span
+        >
+      </p>
+    </div>
+
+    <script src="dist/app.js" defer></script>
+  </body>
+</html>
