@@ -22,7 +22,12 @@ app.set("views", `${__dirname}/views`);
 
 app.use(logger("Complete"));
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(router);
+
+app.use("/css", express.static(`${__dirname}/../public/css`));
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}.`);
