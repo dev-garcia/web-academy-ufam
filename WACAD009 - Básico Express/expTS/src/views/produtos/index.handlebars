@@ -1,0 +1,21 @@
+<h3>Lista de Produtos</h3>
+
+<a href="/produtos/create">Adicionar Produto</a>
+<ul>
+  {{#each data}}
+    <li>{{nome}}
+      - R$
+      {{preco}}
+      - Estoque:
+      {{estoque}}
+      <a href="/produtos/edit/{{id}}">Editar</a>
+      <form
+        action="/produtos/remove/{{id}}"
+        method="POST"
+        style="display:inline;"
+      >
+        <button type="submit">Remover</button>
+      </form>
+    </li>
+  {{/each}}
+</ul>

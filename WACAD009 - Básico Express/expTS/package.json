@@ -3,23 +3,28 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "build:sass": "sass public/scss:public/css --no-source-map --style compressed",
+    "watch:sass": "sass public/scss:public/css --no-source-map --style compressed --watch",
+    "start": "npm run build:sass && nodemon src/index.ts",
     "start:prod": "node build/index.js",
     "env:status": "ts-node src/utils/validateEnv.ts",
     "build": "npx tsc",
     "eslint": "npx eslint --write src/",
     "prettier": "npx prettier --write src/",
-    "tsc:status": "npx tsc --extendedDiagnostics"
+    "tsc:status": "npx tsc --extendedDiagnostics",
+    "db:start": "npx json-server --watch data/db.json --port 4444"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.7.7",
     "dotenv": "^16.4.5",
     "envalid": "^8.0.0",
     "express": "^4.21.0",
     "express-handlebars": "^8.0.1",
+    "json-server": "^1.0.0-beta.3",
     "lorem-ipsum": "^2.0.8",
     "morgan": "^1.10.0"
   },
@@ -32,6 +37,7 @@
     "globals": "^15.9.0",
     "nodemon": "^3.1.6",
     "prettier": "^3.3.3",
+    "sass": "^1.79.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2",
     "typescript-eslint": "^8.6.0"

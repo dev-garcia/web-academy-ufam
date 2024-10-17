@@ -39,7 +39,7 @@ export const generateLorem = (req: Request, res: Response) => {
 export const renderHb1 = (req: Request, res: Response) => {
   res.render("hb1", {
     mensagem: "Olá, você está aprendendo Express + HBS!",
-    layout: false,
+    layout: "main",
   });
 };
 
