@@ -1,0 +1,94 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  cliente_id      Int     @id @default(autoincrement())
+  nome_completo   String
+  cpf             String  @unique
+  celular         String?
+  email           String?
+  data_nascimento String?
+
+  Endereco Endereco[]
+  Compra   Compra[]
+}
+
+model Endereco {
+  endereco_id Int      @id @default(autoincrement())
+  rua         String
+  numero      Int
+  cidade      String
+  estado      String
+  cep         String
+  cliente_id  Int?
+  Cliente     Cliente? @relation(fields: [cliente_id], references: [cliente_id])
+
+  Compra Compra[]
+}
+
+model Categoria {
+  categoria_id Int    @id @default(autoincrement())
+  nome         String
+
+  Subcategoria Subcategoria[]
+}
+
+model Subcategoria {
+  subcategoria_id Int        @id @default(autoincrement())
+  nome            String
+  categoria_id    Int?
+  Categoria       Categoria? @relation(fields: [categoria_id], references: [categoria_id])
+
+  Produto Produto[]
+}
+
+model Produto {
+  produto_id      Int           @id @default(autoincrement())
+  modelo          String
+  fabricante      String?
+  preco_base      Decimal       @db.Decimal(6, 2)
+  qnt_disponivel  Int
+  num_serie       String?
+  subcategoria_id Int?
+  Subcategoria    Subcategoria? @relation(fields: [subcategoria_id], references: [subcategoria_id])
+
+  ProdutosComprados ProdutosComprados[]
+}
+
+model Compra {
+  compra_id         Int       @id @default(autoincrement())
+  data_hora         DateTime
+  desconto          Decimal?  @db.Decimal(6, 2)
+  forma_pagamento   String?
+  total             Decimal   @db.Decimal(6, 2)
+  cliente_id        Int?
+  Cliente           Cliente?  @relation(fields: [cliente_id], references: [cliente_id])
+  endereco_envio_id Int?
+  Endereco          Endereco? @relation(fields: [endereco_envio_id], references: [endereco_id])
+
+  ProdutosComprados ProdutosComprados[]
+}
+
+model ProdutosComprados {
+  compra_id  Int
+  produto_id Int
+  quantidade Int
+  preco      Decimal @db.Decimal(6, 2)
+
+  Compra  Compra  @relation(fields: [compra_id], references: [compra_id])
+  Produto Produto @relation(fields: [produto_id], references: [produto_id])
+
+  @@id([compra_id, produto_id])
+}
