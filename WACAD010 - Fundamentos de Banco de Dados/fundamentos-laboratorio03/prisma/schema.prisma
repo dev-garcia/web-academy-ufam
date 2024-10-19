@@ -58,7 +58,7 @@ model Produto {
   produto_id      Int           @id @default(autoincrement())
   modelo          String
   fabricante      String?
-  preco_base      Decimal       @db.Decimal(6, 2)
+  preco_base      Decimal       @db.Decimal(10, 2)
   qnt_disponivel  Int
   num_serie       String?
   subcategoria_id Int?
@@ -70,9 +70,9 @@ model Produto {
 model Compra {
   compra_id         Int       @id @default(autoincrement())
   data_hora         DateTime
-  desconto          Decimal?  @db.Decimal(6, 2)
+  desconto          Decimal?  @db.Decimal(10, 2)
   forma_pagamento   String?
-  total             Decimal   @db.Decimal(6, 2)
+  total             Decimal   @db.Decimal(10, 2)
   cliente_id        Int?
   Cliente           Cliente?  @relation(fields: [cliente_id], references: [cliente_id])
   endereco_envio_id Int?
@@ -85,7 +85,7 @@ model ProdutosComprados {
   compra_id  Int
   produto_id Int
   quantidade Int
-  preco      Decimal @db.Decimal(6, 2)
+  preco      Decimal @db.Decimal(10, 2)
 
   Compra  Compra  @relation(fields: [compra_id], references: [compra_id])
   Produto Produto @relation(fields: [produto_id], references: [produto_id])
