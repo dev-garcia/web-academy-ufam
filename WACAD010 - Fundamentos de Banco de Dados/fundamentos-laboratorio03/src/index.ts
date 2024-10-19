@@ -22,6 +22,18 @@ app.get("/produto", async (req: Request, res: Response) => {
   }
 });
 
+app.get("/produto-ativo", async (req: Request, res: Response) => {
+  try {
+    const produtos = await prisma.produto.findMany({
+      where: { ativo: true },
+    });
+    res.status(200).json(produtos);
+  } catch (error) {
+    console.error("Deu erroo", error);
+    res.status(500).json({ error: "Erro ao buscar produtos" });
+  }
+});
+
 app.get("/produto/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
@@ -222,13 +234,14 @@ app.delete("/produto/:id", async (req: Request, res: Response) => {
       res.status(404).json({ error: "Produto não encontrado" });
     }
 
-    await prisma.produto.delete({
+    await prisma.produto.update({
       where: { produto_id: Number(id) },
+      data: { ativo: false },
     });
     res.status(204).send();
   } catch (error) {
     console.error("Deu errooo", error);
-    res.status(500).json({ error: "Erro ao deletar o produto" });
+    res.status(500).json({ error: "Erro ao desativar o produto" });
   }
 });
 

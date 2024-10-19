@@ -62,6 +62,7 @@ model Produto {
   qnt_disponivel  Int
   num_serie       String?
   subcategoria_id Int?
+  ativo           Boolean       @default(true)
   Subcategoria    Subcategoria? @relation(fields: [subcategoria_id], references: [subcategoria_id])
 
   ProdutosComprados ProdutosComprados[]
