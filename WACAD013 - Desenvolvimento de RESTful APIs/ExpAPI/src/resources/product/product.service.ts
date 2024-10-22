@@ -1,4 +1,4 @@
-import { Product, PrismaClient } from "@prisma/client";
+import { PrismaClient, Product } from "@prisma/client";
 import { CreateProductDto } from "./product.types";
 
 const prisma = new PrismaClient();

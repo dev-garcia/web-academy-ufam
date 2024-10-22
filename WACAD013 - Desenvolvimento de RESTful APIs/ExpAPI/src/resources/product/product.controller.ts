@@ -10,7 +10,7 @@ import { ReasonPhrases, StatusCodes } from "http-status-codes";
 const index = async (req: Request, res: Response) => {
   try {
     const products = await getAllProducts();
-    res.json();
+    res.json(products);
   } catch (err) {
     res.status(500).json(err);
   }
