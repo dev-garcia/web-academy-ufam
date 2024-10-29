@@ -1,3 +1,3 @@
-export interface changeLanguageDto {
-  lang: string;
+export interface ChangeLanguageDto {
+  lang: "pt-BR" | "en-US";
 }

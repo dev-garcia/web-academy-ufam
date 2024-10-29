@@ -7,6 +7,11 @@ import setLanguageCookie from "./middlewares/setLangCookie";
 import session from "express-session";
 import { v4 as uuid4 } from "uuid";
 
+declare module "express-session" {
+  interface SessionData {
+    uid: number;
+  }
+}
 dotenv.config();
 validateEnv();
 
@@ -22,8 +27,8 @@ app.use(
     saveUninitialized: true,
   })
 ); // não pode ficar antes de cookieParser, pois as ordens importam e sessões usam cookies, por isso tem de ficar depois
-app.use(setLanguageCookie);
 app.use(express.json());
+app.use(setLanguageCookie);
 app.use(router);
 
 app.listen(PORT, () => {

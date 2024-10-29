@@ -7,7 +7,7 @@ import LanguageController from "./language.controller";
 const router = Router();
 
 router.post(
-  "/language",
+  "/",
   validate(changeLanguageSchema),
   LanguageController.changeLanguage
 );
