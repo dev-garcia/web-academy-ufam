@@ -6,10 +6,10 @@ const prisma = new PrismaClient();
 
 export const getAllUsers = async (): Promise<User[]> => {
   return prisma.user.findMany();
-  return users.map((u) => {
-    const { password, ...userWithoutPassword } = u;
-    return userWithoutPassword;
-  });
+  // return users.map((u) => {
+  //  const { password, ...userWithoutPassword } = u;
+  //  return userWithoutPassword;
+  // });
 };
 
 export const createUser = async (user: CreateUserDto): Promise<User> => {

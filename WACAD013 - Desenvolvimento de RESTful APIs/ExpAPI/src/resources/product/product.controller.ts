@@ -17,6 +17,9 @@ const index = async (req: Request, res: Response) => {
 };
 
 const create = async (req: Request, res: Response) => {
+  /*
+  Adicionar doc swagger, com exemplos e retornos [summary, parametros, response e schema]
+  */
   try {
     const product: CreateProductDto = req.body;
     if (!(await checkAllreadyExists(product.name))) {
