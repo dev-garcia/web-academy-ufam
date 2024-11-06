@@ -1,0 +1,35 @@
+1 - Criação da Rede
+Temos que estar na pasta principal cord_cont_exerc e vamos criar a rede:
+
+sudo docker network create rede_webacademy
+
+2 - Vamos executar os comandos docker para o back-end
+
+cd back
+sudo docker build -t back-image .
+sudo docker run -d --name back --network rede_webacademy -p 4000:4000 back-image
+cd ..
+
+3 - Vamos executar os comandos para o front-end
+
+cd front
+sudo docker build -t front-image .
+sudo docker run -d --name front --network rede_webacademy -p 3000:3000 front-image
+cd ..
+
+4 - Conferindo os containeres docker
+
+sudo docker ps
+
+Aqui resultou assim:
+CONTAINER ID   IMAGE         COMMAND                  CREATED              STATUS              PORTS                                       NAMES
+16c98d061024   front-image   "docker-entrypoint.s…"   32 seconds ago       Up 31 seconds       0.0.0.0:3000->3000/tcp, :::3000->3000/tcp   front
+933e6407131d   back-image    "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:4000->4000/tcp, :::4000->4000/tcp   back
+
+Acessei http://localhost:3000/ e enviei no input "funcionou!" e funcionou com sucesso.
+
+Com o comando:
+
+sudo docker logs -f back
+
+Foi possível acompanhar as impressões das entradas do front.
