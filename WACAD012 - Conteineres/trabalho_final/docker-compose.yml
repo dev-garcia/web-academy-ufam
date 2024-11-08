@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_wPASSWORD: password
+      MYSQL_DATABASE: web_academy
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/script.sql:/docker-entrypoint-initdb.d/script.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "8080:80"
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    environment:
+      - DATABASE_URL=mysql://root:password@mysql:3306/web_academy
+      - PORT=4444
+    ports:
+      - "4444:4444"
+    volumes:
+      - backend_logs:/app/log
+    depends_on:
+      - mysql
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:
+  backend_logs:

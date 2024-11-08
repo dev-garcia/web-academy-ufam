@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.rotas = void 0;
+const livros_1 = require("./livros");
+const HomeController_1 = require("../controllers/HomeController");
+const express_1 = require("express");
+const rotas = (0, express_1.Router)();
+exports.rotas = rotas;
+const homeController = new HomeController_1.HomeController();
+rotas.get("/", homeController.home.bind(homeController));
+rotas.use("/livros", livros_1.rotasLivros);
