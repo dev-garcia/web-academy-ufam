@@ -1,3 +1,5 @@
+import { ItemCarrinho } from "../types/carrinho";
+
 export const mockItensCarrinho: ItemCarrinho[] = [
   { id: "1", nome: "Bicicleta", preco: 1000, quantidade: 2 },
   { id: "2", nome: "Echo dot", preco: 600, quantidade: 1 },
