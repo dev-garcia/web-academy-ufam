@@ -1,12 +1,11 @@
 // src/app/components/ListagemProdutos/CardProduto.tsx
 "use client";
 
-import Image from "next/image";
-
+import { Produto } from "@/app/types/carrinho";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import axios from "axios";
+import Image from "next/image";
 import { toast } from "react-toastify";
-import { Produto } from "@/app/types/carrinho";
 
 interface CardProdutoProps {
   produto: Produto;

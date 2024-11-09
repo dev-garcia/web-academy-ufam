@@ -1,16 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import ResumoCarrinho from "./components/ResumoCarrinho";
-import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
-
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { useState } from "react";
+import ListagemProdutos from "./components/ListagemProdutos/ListagemProdutos";
+import ResumoCarrinho from "./components/ResumoCarrinho";
 import { Produto } from "./types/carrinho";
 
 async function fetchProdutos(): Promise<Produto[]> {
   const { data } = await axios.get(
-    "https://ranekapi.origamid.dev/json/api/produto"
+    "https://ranekapi.origamid.dev/json/api/produto",
   );
   return data;
 }

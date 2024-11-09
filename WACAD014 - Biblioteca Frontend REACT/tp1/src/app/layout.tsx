@@ -2,10 +2,10 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./components/Navbar";
-import BootstrapClient from "./components/BootstrapClient";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BootstrapClient from "./components/BootstrapClient";
+import Navbar from "./components/Navbar";
 
 const queryClient = new QueryClient();
 

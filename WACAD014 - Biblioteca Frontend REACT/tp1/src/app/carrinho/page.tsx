@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import ResumoCarrinho from "../components/ResumoCarrinho";
-
 import ListagemCarrinho from "../components/ListagemCarrinho/ListagemCarrinho";
+import ResumoCarrinho from "../components/ResumoCarrinho";
 import { mockItensCarrinho } from "../mocks/itensCarrinhos";
 import { ItemCarrinho } from "../types/carrinho";
 
@@ -17,23 +16,23 @@ export default function CarrinhoPage() {
 
   const quantidadeTotal = itensCarrinho.reduce(
     (total, item) => total + item.quantidade,
-    0
+    0,
   );
   const valorTotal = itensCarrinho.reduce(
     (total, item) => total + item.preco * item.quantidade,
-    0
+    0,
   );
 
   return (
     <main>
       <div className="container p-5">
-        <ResumoCarrinho
-          quantidadeTotal={quantidadeTotal}
-          valorTotal={valorTotal}
-        />
         <ListagemCarrinho
           itens={itensCarrinho}
           removerItemDoCarrinho={removerItemDoCarrinho}
+        />
+          <ResumoCarrinho
+          quantidadeTotal={quantidadeTotal}
+          valorTotal={valorTotal}
         />
       </div>
     </main>

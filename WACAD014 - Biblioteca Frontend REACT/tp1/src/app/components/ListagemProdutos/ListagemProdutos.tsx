@@ -1,7 +1,7 @@
 "use client";
 
-import CardProduto from "./CardProduto";
 import { Produto } from "../../types/carrinho";
+import CardProduto from "./CardProduto";
 
 interface ListagemProdutosProps {
   produtos: Produto[];
