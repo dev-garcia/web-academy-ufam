@@ -1,8 +1,8 @@
 "use client";
 
 import { Produto } from "@/app/types/carrinho";
+import { apiFavoritos } from "@/app/utils/api";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -19,8 +19,9 @@ export default function CardProduto({
   const router = useRouter();
 
   const { mutate: favoritarProduto } = useMutation({
-    mutationFn: async () =>
-      axios.post("https://api.example.com/favoritos", produto),
+    mutationFn: async () => {
+      await apiFavoritos.post("/favoritos", produto);
+    },
     onSuccess: () => toast.success("Produto favoritado!"),
     onError: () => toast.error("Erro ao favoritar."),
   });
@@ -30,6 +31,8 @@ export default function CardProduto({
       <div className="card shadow-sm h-100">
         <Image
           src={produto.fotos[0].src}
+          width={300}
+          height={200}
           alt={produto.nome}
           className="card-img-top"
         />

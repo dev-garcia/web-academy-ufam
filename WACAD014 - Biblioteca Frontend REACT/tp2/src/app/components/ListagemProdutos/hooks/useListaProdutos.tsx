@@ -1,13 +1,10 @@
-"use client";
-
 import { Produto } from "@/app/types/carrinho";
+import { apiProdutos } from "@/app/utils/api";
+
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 
 export async function getListaProduto() {
-  const { data } = await axios.get<Produto[]>(
-    "https://api.example.com/produto",
-  );
+  const { data } = await apiProdutos.get<Produto[]>("/produto");
   return data;
 }
 

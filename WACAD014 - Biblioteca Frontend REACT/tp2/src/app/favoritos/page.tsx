@@ -1,13 +1,12 @@
 "use client";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { toast } from "react-toastify";
-import ListagemProdutos from "../components/ListagemProdutos/ListagemProdutos";
 import { Produto } from "../types/carrinho";
+import { apiFavoritos } from "../utils/api";
 
-async function fetchFavoritos(): Promise<Produto[]> {
-  const { data } = await axios.get("https://xxx-xxx-xx.glitch.me/favoritos");
+export async function getFavoritos(): Promise<Produto[]> {
+  const { data } = await apiFavoritos.get<Produto[]>("/favoritos");
   return data;
 }
 
@@ -20,12 +19,12 @@ export default function FavoritosPage() {
     isError,
   } = useQuery({
     queryKey: ["favoritos"],
-    queryFn: fetchFavoritos,
+    queryFn: getFavoritos,
   });
 
   const { mutate: removerFavorito } = useMutation({
     mutationFn: async (id: string) => {
-      await axios.delete(`https://xxx-xxx-xx.glitch.me/favoritos/${id}`);
+      await apiFavoritos.delete(`/favoritos/${id}`);
     },
     onSuccess: () => {
       toast.success("Favorito removido com sucesso!");
@@ -40,11 +39,14 @@ export default function FavoritosPage() {
   return (
     <main className="container p-5">
       <h1 className="mb-4">Meus Favoritos</h1>
-      <ListagemProdutos
-        produtos={favoritos}
-        adicionarAoCarrinho={() => {}}
-        removerItem={(id: string) => removerFavorito(id)}
-      />
+      <ul>
+        {favoritos.map((produto) => (
+          <li key={produto.id}>
+            {produto.nome}
+            <button onClick={() => removerFavorito(produto.id)}>Remover</button>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }

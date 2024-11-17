@@ -37,7 +37,7 @@ export default function HomePage() {
         />
         <h5 className="mb-3">Produtos disponíveis:</h5>
         <ListagemProdutos
-          produtos={produtos}
+          listaProdutos={produtos}
           adicionarAoCarrinho={adicionarAoCarrinho}
         />
       </div>
