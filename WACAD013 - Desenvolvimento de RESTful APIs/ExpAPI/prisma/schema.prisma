@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,34 +7,55 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// evitar id auto increment, pois não é muito seguro, fica previsivel os id's, os ids não são a melhor alternativa
-// uma forma é o id ordenavel no back-end
-
-// o VARCHAR é mais custoso que o CHAR, mas nem sempre usamos o CHAR
-// 
-
-model Product {
-  id            String   @id @default(uuid()) @db.Char(36)
-  name          String   @unique @db.VarChar(100)
-  price         Decimal  @db.Decimal(10, 2)
-  stockQuantity Int      @db.Int()
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+model UserType {
+  id        String   @id @db.Char(36)
+  label     String   @db.VarChar(10)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  users     User[]
 }
 
 model User {
   id         String   @id @default(uuid()) @db.Char(36)
-  name       String   @db.VarChar(100)
-  email      String   @unique @db.VarChar(100)
+  name       String   @db.VarChar(40)
+  email      String   @unique @db.VarChar(255)
+  password   String 
   userTypeId String
-  userType   UserType @relation(fields: [userTypeId], references: [id])
-  password   String   @db.Char(60)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+
+  userType UserType   @relation(fields: [userTypeId], references: [id])
+  Purchase Purchase[]
 }
 
-model UserType {
-  id    String @id @default(uuid()) @db.Char(36)
-  label String @db.Char(6)
-  user  User[]
+model Purchase {
+  id        String   @id @default(uuid()) @db.Char(36)
+  userId    String   @db.Char(36)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user  User           @relation(fields: [userId], references: [id])
+  items PurchaseItem[]
+}
+
+model PurchaseItem {
+  id         String   @id @default(uuid()) @db.Char(36)
+  purchaseId String   @db.Char(36)
+  productId  String   @db.Char(36)
+  quantity   Int      @db.Int()
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  purchase Purchase @relation(fields: [purchaseId], references: [id])
+  product  Product  @relation(fields: [productId], references: [id])
+}
+
+model Product {
+  id            String         @id @default(uuid()) @db.Char(36)
+  name          String         @unique @db.VarChar(100)
+  price         Decimal        @db.Decimal(10, 2)
+  stockQuantity Int            @db.Int()
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  PurchaseItem  PurchaseItem[]
 }

@@ -12,30 +12,71 @@
     "/v1/products/": {
       "get": {
         "tags": ["Produto"],
+        "summary": "Lista todos os produtos",
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "post": {
         "tags": ["Produto"],
+        "summary": "Cria um novo produto",
         "description": "",
         "parameters": [
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/CreateProduct"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/v1/products/{id}": {
+      "get": {
+        "tags": ["Produto"],
+        "summary": "Busca um produto pelo ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Produto"],
+        "summary": "Atualiza um produto existente",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateProduct"
             }
           }
         ],
@@ -44,45 +85,10 @@
             "description": "OK"
           }
         }
-      }
-    },
-    "/v1/products/{id}": {
-      "get": {
-        "tags": ["Produto"],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
-      "put": {
-        "tags": ["Produto"],
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
       },
       "delete": {
         "tags": ["Produto"],
+        "summary": "Deleta um produto existente",
         "description": "",
         "parameters": [
           {
@@ -99,29 +105,10 @@
         }
       }
     },
-    "/v1/language/": {
+    "/v1/auth/signup": {
       "post": {
-        "tags": ["Linguagens"],
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/v1/users/": {
-      "get": {
-        "tags": ["Usuários"],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      },
-      "post": {
-        "tags": ["Usuários"],
+        "tags": ["Autenticação"],
+        "summary": "Cria um novo usuário",
         "description": "",
         "parameters": [
           {
@@ -132,6 +119,9 @@
               "properties": {
                 "email": {
                   "example": "any"
+                },
+                "password": {
+                  "example": "any"
                 }
               }
             }
@@ -142,23 +132,222 @@
             "description": ""
           }
         }
-      },
-      "put": {
-        "tags": ["Usuários"],
+      }
+    },
+    "/v1/auth/login": {
+      "post": {
+        "tags": ["Autenticação"],
+        "summary": "Realiza login",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/v1/auth/logout": {
+      "post": {
+        "tags": ["Autenticação"],
+        "summary": "Realiza logout",
         "description": "",
         "responses": {
           "default": {
             "description": ""
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/v1/users/": {
+      "get": {
         "tags": ["Usuários"],
+        "summary": "Lista todos os usuários",
         "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Usuários"],
+        "summary": "Cria um novo usuário",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateUser"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "description": ""
           }
+        }
+      }
+    },
+    "/v1/users/{id}": {
+      "get": {
+        "tags": ["Usuários"],
+        "summary": "Busca um usuário pelo ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID do usuário"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Usuários"],
+        "summary": "Atualiza um usuário existente",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Usuários"],
+        "summary": "Deleta um usuário",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID do usuário"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "CreateProduct": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Notebook"
+        },
+        "price": {
+          "type": "number",
+          "example": 1999.99
+        },
+        "stockQuantity": {
+          "type": "number",
+          "example": 10
+        }
+      }
+    },
+    "UpdateProduct": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Produto Atualizado"
+        },
+        "price": {
+          "type": "number",
+          "example": 99.99
+        },
+        "stockQuantity": {
+          "type": "number",
+          "example": 5
+        }
+      }
+    },
+    "CreateUser": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Cristian Garcia"
+        },
+        "email": {
+          "type": "string",
+          "example": "cristian.garcia@icomp.ufam.edu.br"
+        },
+        "password": {
+          "type": "string",
+          "example": "123456"
+        },
+        "userTypeId": {
+          "type": "string",
+          "example": "6a4cda94-fbb6-476b-be29-f4124cae9058"
+        }
+      }
+    },
+    "UpdateUser": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Nome Atualizado"
+        },
+        "email": {
+          "type": "string",
+          "example": "email.atualizado@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "novasenha"
+        },
+        "userTypeId": {
+          "type": "string",
+          "example": "7edd25c6-c89e-4c06-ae50-c3c32d71b8ad"
         }
       }
     }

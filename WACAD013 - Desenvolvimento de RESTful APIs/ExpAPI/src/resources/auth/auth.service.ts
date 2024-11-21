@@ -1,22 +1,21 @@
-const users = [
-  {
-    id: 1,
-    email: "aaaa@example.com",
-    password: "123456",
-  },
-  {
-    id: 2,
-    email: "bbbb@example.com",
-    password: "123456",
-  },
-];
+import { PrismaClient, User } from "@prisma/client";
+import { LoginDto } from "./auth.types";
+import { compare } from "bcryptjs";
 
-const checkAuth = (email: string, password: string): number | null => {
-  const user = users.find((u) => u.email === email && u.password === password);
-  if (user) {
-    return user.id;
+const prisma = new PrismaClient();
+
+export const checkCredentials = async (
+  credentials: LoginDto
+): Promise<User | null> => {
+  const user = await prisma.user.findUnique({
+    where: { email: credentials.email },
+  });
+  if (user && (await compare(credentials.password, user.password))) {
+    return user;
   }
   return null;
 };
 
-export { checkAuth };
+export const findUserByEmail = async (email: string): Promise<User | null> => {
+  return prisma.user.findUnique({ where: { email } });
+};

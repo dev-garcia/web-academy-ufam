@@ -1,11 +1,10 @@
 import Joi from "joi";
-import { UserTypes } from "../userType/userType.constants";
 
-const userShcema = Joi.object().keys({
+const usuarioSchema = Joi.object({
   name: Joi.string().min(3).max(40).required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().min(3).max(40).required(),
-  UserTypeId: Joi.valid(UserTypes.admin, UserTypes.client).required(),
+  email: Joi.string().email().max(255).required(),
+  password: Joi.string().min(6).max(255).required(),
+  userTypeId: Joi.string().required(),
 });
 
-export default userShcema;
+export default usuarioSchema;
