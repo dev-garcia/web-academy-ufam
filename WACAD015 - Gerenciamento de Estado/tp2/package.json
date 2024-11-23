@@ -1,0 +1,33 @@
+{
+  "name": "wa-loja-context-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "json-server": "json-server --watch db.json --port 3001"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.61.0",
+    "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
+    "json-server": "^1.0.0-beta.3",
+    "next": "14.2.18",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.18",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "typescript": "^5"
+  }
+}
